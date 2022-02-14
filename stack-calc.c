@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "intstack.h"
 
 stack user_stack = NULL;
@@ -55,9 +57,7 @@ void cmd_multiply(stack *s) {
     push(s, value1 * value2);
 }
 
-int main() {
-    printf("starting\n\n");
-
+void demo() {
     push(&user_stack, 2);
     push(&user_stack, 15);
     push(&user_stack, 3);
@@ -75,7 +75,6 @@ int main() {
 
     cmd_multiply(&user_stack);
 
-
     user_pop(&user_stack);
     user_pop(&user_stack);
     user_pop(&user_stack);
@@ -85,6 +84,32 @@ int main() {
 
     user_pop(&user_stack);
     user_pop(&user_stack);
+}
+
+void run_user_command(char *cmd) {
+    if(strlen(cmd) == 0) return;
+
+    if (cmd[0] == '+') {
+        cmd_add(&user_stack);
+    } else if (cmd[0] == '-') {
+        cmd_subtract(&user_stack);
+    } else if ((cmd[0] == '*') || (cmd[0] == 'x')) {
+        cmd_multiply(&user_stack);
+    } else if (cmd[0] == 'p') {
+        user_pop(&user_stack);
+    } else {
+        push(&user_stack, atoi(cmd));
+    }
+}
+
+int main(int argc, char *argv[]) {
+    printf("starting\n\n");
+    // demo();
+
+    for(int i = 1; i < argc; i++) {
+        printf("command: %s\n",argv[i]);
+        run_user_command(argv[i]);
+    }
 
     printf("\ndone\n");
     return 0;

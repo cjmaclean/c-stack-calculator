@@ -1,0 +1,25 @@
+stack-calc.exe [arguments]
+
+Runs the arguments as stack commands:
++ removes and adds the two values on top of the stack
+  the result is pushed on top of the stack 
+- similar but subtracts
+x similar but multiplies
+p pops and displays the top of the stack
+
+
+example:
+stack-calc.exe 2 15 3 x + p
+
+first this puts 2, 15 and 3 on the stack.
+x multiplies 3 and 15 on top of the stack, resulting in stack:
+2 45
++ adds 2 and 45 on stack, resulting in stack: 47
+p pops and displays the 47
+
+example: 
+stack-calc.exe + 2 15 3 + + 15 3 - 15 3 x p p p p 8 p p
+
+demonstrates all features:
+add, subtract,
+multiply, pop/display, displat error due to empty stack
