@@ -10,7 +10,6 @@ struct stack_element {
 
 typedef struct stack_element *stack;
 
-
 void push(stack *s, int value) {
     struct stack_element *new_stack_element;
     new_stack_element = malloc(sizeof(struct stack_element));
@@ -24,9 +23,9 @@ void push(stack *s, int value) {
     }
 }
 
-stack user_stack = NULL;
-
 /* end stack type */
+
+stack user_stack = NULL;
 
 int main() {
     printf("starting\n");
