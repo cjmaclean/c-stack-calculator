@@ -24,7 +24,35 @@ void cmd_add(stack *s) {
         return;
     }
     int value2 = pop(s);
-    push(s, value1+value2);
+    push(s, value1 + value2);
+}
+
+void cmd_subtract(stack *s) {
+    if (empty(*s)) {
+        printf("Stack is empty, cannot subtract values\n");
+        return;
+    }
+    int value1 = pop(s);
+    if (empty(*s)) {
+        printf("Stack insufficient, cannot subtract values\n");
+        return;
+    }
+    int value2 = pop(s);
+    push(s, value1 - value2);
+}
+
+void cmd_multiply(stack *s) {
+    if (empty(*s)) {
+        printf("Stack is empty, cannot multiply values\n");
+        return;
+    }
+    int value1 = pop(s);
+    if (empty(*s)) {
+        printf("Stack insufficient, cannot multiply values\n");
+        return;
+    }
+    int value2 = pop(s);
+    push(s, value1 * value2);
 }
 
 int main() {
@@ -35,7 +63,19 @@ int main() {
     push(&user_stack, 3);
 
     cmd_add(&user_stack);
-    
+    cmd_add(&user_stack);
+
+    push(&user_stack, 15);
+    push(&user_stack, 3);
+
+    cmd_subtract(&user_stack);
+
+    push(&user_stack, 15);
+    push(&user_stack, 3);
+
+    cmd_multiply(&user_stack);
+
+
     user_pop(&user_stack);
     user_pop(&user_stack);
     user_pop(&user_stack);

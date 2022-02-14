@@ -1,0 +1,4 @@
+New command:
+gcc stack-calc.c intstack.c -o stack-calc.exe
+Previous command:
+gcc stack-calc.c -o stack-calc.exe
